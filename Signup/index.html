@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <!-- Background Video -->
+  
     <video class="bg-video" autoplay muted loop>
       <source src="../Signup/videos/video2.mp4" type="video/mp4" />
     </video>
@@ -42,7 +42,8 @@
         <div class="input-box">
           <input type="password" id="password" placeholder="" required />
           <label>Password</label>
-          <i class="fa-solid fa-lock"></i>
+          <i class="show-pass1 fa-solid fa-eye"></i>
+          <i class="hide-pass1 fa-solid fa-eye-slash" style="display: none"></i>
           <span class="line"></span>
         </div>
 
@@ -54,15 +55,24 @@
             required
           />
           <label>Confirm Password</label>
-          <i class="fa-solid fa-lock"></i>
           <span class="line"></span>
+          <i class="show-pass2 fa-solid fa-eye"></i>
+          <i class="hide-pass2 fa-solid fa-eye-slash" style="display: none"></i>
         </div>
-
-        <a href="../Login/index.html" class="login-btn link-btn">Login</a>
+<p class="account-text">
+  Already have an account?
+  <a href="../Login/index.html">Log in</a>
+</p>
         <button type="submit" class="signup-btn">Sign Up</button>
       </form>
     </div>
 
+      <div class="popup-box">
+        <div class="checkmark">✓</div>
+        <p>Form Submitted</p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.mjs"></script>
   </body>
 </html>

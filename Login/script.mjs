@@ -21,5 +21,29 @@ document.querySelector(".sign-form").addEventListener("submit", (e) => {
     alert("Please Enter Your Password");
     return;
   }
-  console.log("form Submitted");
+
+  document.querySelector(".sign-form").reset();
+
+  Swal.fire({
+    icon: "success",
+    title: "Form Submitted",
+    showConfirmButton: false,
+    timer: 2000,
+  });
+});
+
+const passwordInput = document.querySelector("#password");
+const showPass = document.querySelector(".show-pass");
+const hidePass = document.querySelector(".hide-pass");
+
+showPass.addEventListener("click", () => {
+  passwordInput.type = "text";
+  showPass.style.display = "none";
+  hidePass.style.display = "block";
+});
+
+hidePass.addEventListener("click", () => {
+  passwordInput.type = "password";
+  showPass.style.display = "block";
+  hidePass.style.display = "none";
 });
