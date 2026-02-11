@@ -1,3 +1,10 @@
+let user_string = localStorage.getItem("currentUsers");
+let string_data = JSON.parse(user_string);
+
+if (string_data) {
+  window.location.href = "../posts/index.html";
+}
+
 document.querySelector(".sign-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -29,13 +36,34 @@ document.querySelector(".sign-form").addEventListener("submit", (e) => {
     return;
   }
 
-  document.querySelector(".sign-form").reset();
+  let all_users_string = localStorage.getItem("user");
+  let all_users = JSON.parse(all_users_string) || [];
+
+  let existing_user = all_users.find((user) => {
+    return user.email.toLowerCase() === email.toLowerCase();
+  });
+
+  if (existing_user) {
+    alert("An account with this email already exists. Please log in instead");
+    window.location.href = "../Login/index.html";
+    return;
+  }
+
+  let newUser = {
+    email: email.toLowerCase(),
+    password: password,
+  };
+
+  let updated_users = [newUser, ...all_users];
+  localStorage.setItem("user", JSON.stringify(updated_users));
 
   Swal.fire({
     icon: "success",
-    title: "Form Submitted",
+    title: "Account created successfully",
     showConfirmButton: false,
     timer: 2000,
+  }).then(() => {
+    window.location.href = "../Login/index.html";
   });
 });
 
