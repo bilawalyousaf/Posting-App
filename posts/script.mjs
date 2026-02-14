@@ -169,13 +169,11 @@ function rendor_posts() {
   output.innerHTML = "";
 
   all_posts.forEach((posts, index) => {
-    
-  posts.likes = posts.likes || [];
+    posts.likes = posts.likes || [];
 
-  let useremail = posts.likes.find((email) => {
-    return email === string_data.email;
-  });
-
+    let useremail = posts.likes.find((email) => {
+      return email === string_data.email;
+    });
 
     output.innerHTML += `
   <div class="single-post">
@@ -189,7 +187,7 @@ function rendor_posts() {
           ? ` <button class="${useremail ? "liked-posts" : "unliked-posts"}" onclick="like_post(${index})"><i class="bi bi-hand-thumbs-up"></i> Like(${posts.likes.length})</button>
       <button onclick="edit_post(${index})"><i class="bi bi-pencil-square"></i> Edit</button>
       <button onclick="delete_post(${index})"><i class="bi bi-trash"></i> Delete</button> `
-          : `<button class="${useremail ? "liked-posts" : "unliked-posts"}" onclick="like_post(${index})"><i class="bi bi-hand-thumbs-up"></i> Like</button>`
+          : `<button class="${useremail ? "liked-posts" : "unliked-posts"}" onclick="like_post(${index})"><i class="bi bi-hand-thumbs-up"></i> Like(${posts.likes.length})</button>`
       }
     </div>
     
